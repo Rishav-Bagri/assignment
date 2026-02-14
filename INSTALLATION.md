@@ -23,7 +23,8 @@ Ensure the following are installed:
 
 
 start docker desktop
-#Either do this ``` docker compose up --build ``` or follow steps below
+
+# Either do this ``` docker compose up --build ``` or follow steps below
 
 ------------------------------------------------------------------------
 
