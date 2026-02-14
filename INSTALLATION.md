@@ -40,9 +40,10 @@ cd assignment
 
 1.  Start Docker Desktop
 2.  Open terminal in the project root folder
-3.  Run:
+3.  Run one by one:
 
 ``` bash
+bash ollama-entrypoint.sh
 docker compose up --build
 ```
 
