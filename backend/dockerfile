@@ -1,0 +1,25 @@
+# ---------- Base Image ----------
+FROM node:22-alpine
+
+# ---------- Set Working Directory ----------
+WORKDIR /app
+
+# ---------- Install Dependencies (Better Caching) ----------
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# ---------- Copy Prisma Schema First ----------
+COPY prisma ./prisma
+
+# Generate Prisma Client
+RUN npx prisma generate
+
+# ---------- Copy Rest of Application ----------
+COPY . .
+
+# ---------- Expose App Port ----------
+EXPOSE 3000
+
+# ---------- Start App ----------
+# migrate deploy is production-safe (NOT migrate dev)
+CMD sh -c "npx prisma migrate deploy && npm run dev"
